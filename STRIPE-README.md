@@ -1,87 +1,89 @@
-# Project Title
+# Stripe
 
-One Paragraph of project description goes here
+"Stripe is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world." -Stripe
 
-## Getting Started
+Stripe offers API services for developers to build an ecommerce site. Popular clients include Twitter, Lyft, Pinterest, and Slack. It is available in curl, Ruby, Python, PHP, Java, Node, and Go.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+### The Company
 
-### Prerequisites
+Founded by two brothers in 2011 in San Francisco. Worth 1.1B each.
+Funded by CapitalG (google), Elon Musk and Peter Thiel, among others. 
 
-What things you need to install the software and how to install them
+
+## Implementation
+Dependencies include bluebird, lodash.isplainobject, object-assign, and qs. 
+
+Install using the correct command for your language. 
+Ruby: ```gem 'stripe'``` along with ```bundle install```
+Node: ```npm install stripe```
+
+## How does it work?
+
+1. It fetches the user’s credit card information, and sends an AJAX request to Stripe’s server, which will return a unique token that represents this secure data.
+
+1. Using your server-side language of choice, create a new Stripe charge, passing through the unique token.
+
+(source: tutsplus)
+
+
+## Why use Stripe?
+
+Payment Card Industry Data Security Standard.
+Unless you're a large established business, it's not a great idea to store users' credit card information on your server. Stripe handles this for you.
+
+#### How does it compare to other services?
+Pros: low fees, quality documentation, separation of concerns in regards to users' private information.
+
+Paypal: more expensive than Stripe with extra service fees. They have fees for refunds, chargeback, and American Express. Do not accept Apple Pay.
+
+Shopify: They use Stripe, but charge a monthly fee for their services. 
+
+#### Good to know
+
+1. The form should not have a ```name==""``` attribute for the credit card number. Stripe.js parses the form using attributes like ```data-stripe="number"```.
+
+1. When you sign up for an account, you get a public key for the front-end, and a private key for the back-end. 
+
+1. When payment is submitted to the Stripe server, they generate a single use token based on the customer's data. A callback function takes the token and submits it to your server. This is how they prevent credit card info from touching your server. Non-sensitive information can be stored in your server.
+
+1. There must be an SSL certificate for your server.
+
+#### Code Sample
+Stripe offers front-end customization: use their proprietary "Checkout" form, or create your own.  A sample of their code is below:
 
 ```
-Give examples
+<form action="/your-server-side-code" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+    data-amount="999"
+    data-name="Stripe.com"
+    data-description="Widget"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true">
+  </script>
+</form>
 ```
 
-### Installing
+![form picture](http://i.imgur.com/jlxsxpO.png)
 
-A step by step series of examples that tell you have to get a development env running
+### Resources
 
-Say what the step will be
+https://stripe.com/us/payments
+https://stripe.com/docs/api
 
-```
-Give the example
-```
+### Extras
 
-And repeat
+https://code.tutsplus.com/tutorials/how-to-accept-payments-with-stripe--pre-80957
+https://github.com/bendrucker/stripe-as-promised
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Chris and Franklin
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Go Vince
